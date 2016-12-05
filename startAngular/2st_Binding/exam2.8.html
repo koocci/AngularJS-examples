@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+  <head>
+    <meta charset="utf-8" />
+    <title>example 2.8</title>
+  </head>
+  <body>
+    <div  ng-init="customerList = [{name : '영희', age : 25}, {name : '순희', age : 28}]">
+      <ul>
+        <li ng-repeat="customer in customerList">
+          [{{$index + 1}}] 고객 이름 : {{customer.name}}, 고객 나이 : {{customer.age}}
+        </li>
+      </ul>
+    </div>
+    <div ng-init="myFriend = {name : '철수', age : 25, hobby : '축구'}">
+      내 친구 소개
+      <ul>
+        <li ng-repeat="(attr, value) in myFriend">
+          <p>
+            {{attr}} : {{value}}
+          </p>
+        </li>
+      </ul>
+    </div>
+    <!--angular file-->
+    <script src="../angular.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+      var myApp = angular.module('myApp', []);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+  <head>
+    <meta charset="utf-8" />
+    <title>example 2.12</title>
+  </head>
+  <body ng-controller="myCtrl">
+    <div>
+      고객 목록
+        <ul>
+          <li ng-repeat="customer in customerList">
+            [{{$index + 1}}] 고객 이름 : {{customer.name}}, 고객 나이 : {{customer.age}}
+          </li>
+        </ul>
+    </div>
+    <div>
+      고객 목록
+        <ul>
+          <li ng-repeat="youngCustomer in youngCustomerList">
+            [{{$index + 1}}] 고객 이름 : {{youngCustomer.name}}, 고객 나이 : {{youngCustomer.age}}
+          </li>
+        </ul>
+    </div>
+
+
+    <!--angular file-->
+    <script src="../angular.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+      var myApp = angular.module('myApp', []);
+      myApp.controller('myCtrl', ['$scope', function($scope) {
+        var customerList = [{name : '영희', age : 10}, {name : '순희', age : 28}];
+        var youngCustomerList = [];
+
+        angular.forEach(customerList, function(value, key){
+          if(value.age < 25){
+            youngCustomerList.push(value);
+          }
+        });
+        $scope.customerList = customerList;
+        $scope.youngCustomerList = youngCustomerList;
+      }]);
+    </script>
+  </body>
+</html>

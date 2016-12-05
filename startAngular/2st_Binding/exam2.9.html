@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+  <head>
+    <meta charset="utf-8" />
+    <title>example 2.9</title>
+    <style type="text/css">
+      .box{
+        width: 100px;
+        height: 100px;
+      }
+      .red{
+        background-color: red;
+      }
+      .green{
+        background-color: green;
+      }
+      .blue{
+        background-color: blue;
+      }
+      .black{
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input type="radio" ng-model="color" value="red" > 빨강 </input>
+      <input type="radio" ng-model="color" value="green" > 초록 </input>
+      <input type="radio" ng-model="color" value="blue" > 파랑 </input>
+
+      <div ng-switch on="color">
+        <div ng-switch-when="red" class="box red"></div>
+        <div ng-switch-when="green" class="box green"></div>
+        <div ng-switch-when="blue" class="box blue"></div>
+        <div ng-switch-default class="box black"></div>
+      </div>
+
+    </div>
+
+    <!--angular file-->
+    <script src="../angular.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+      var myApp = angular.module('myApp', []);
+
+    </script>
+  </body>
+</html>
