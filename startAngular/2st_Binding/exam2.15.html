@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+  <head>
+    <meta charset="utf-8" />
+    <title>example 2.15</title>
+  </head>
+  <body>
+    <div ng-init="countryList = [{name : '한국', code : 'ko', continent : '아시아'},{name : '일본', code : 'jr', continent : '아시아'},{name : '미국', code : 'en', continent : '북미'}]">
+      <form name="sampleForm">
+        <div>
+          출발 국가 :
+          <select ng-model="depCountry" ng-options="country.name for country in countryList" ng-required= "true">
+            <option value="">
+              선택해 주세요.
+            </option>
+          </select>
+        </div>
+        <div>
+          경유 국가 :
+          <select ng-model="viaCountry" ng-options="country.name for country in countryList">
+            <option value="">
+              선택해 주세요.
+            </option>
+          </select>
+        </div>
+        <div>
+          도착 국가 :
+          <select ng-model="arrCountry" ng-options="country.name group by country.continent for country in countryList" ng-required= "true">
+            <option value="">
+              선택해 주세요.
+            </option>
+          </select>
+        </div>
+      </form>
+      <div>
+        <p>
+          출발 국가 : {{depCountry.name}}
+        </p>
+        <p>
+          경유 국가 : {{viaCountry.name}}
+        </p>
+        <p>
+          도착 국가 : {{arrCountry.name}}
+        </p>
+      </div>
+      <div ng-show="sampleForm.$invalid">
+        출발 국가와 도착 국가는 필히 선택해 주세요
+      </div>
+    </div>
+
+    <!--angular file-->
+    <script src="../angular.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+      var myApp = angular.module('myApp', []);
+
+    </script>
+  </body>
+</html>
