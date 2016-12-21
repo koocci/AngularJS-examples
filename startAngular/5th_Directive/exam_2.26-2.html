@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app = "sampleApp">
+  <head>
+    <meta charset="utf-8" />
+    <title>example 2.26-2</title>
+  </head>
+  <body>
+    <div hello name = 'angularJS'></div>
+    <!--angular file-->
+    <script src="../angular.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+      angular.module('sampleApp', [])
+        .directive('hello', function(){
+          return {
+            templateUrl : "template/helloTmpl2.html",
+            restrict : "AE",
+            link : function link (scope, iEl, iAt, ctrl){
+              scope.name = iAt.name;
+            }
+          }
+        });
+    </script>
+  </body>
+</html>

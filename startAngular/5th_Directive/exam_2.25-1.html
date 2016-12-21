@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app = "sampleApp">
+  <head>
+    <meta charset="utf-8" />
+    <title>example 2.25-1</title>
+  </head>
+  <body>
+    <div hello name = 'angularJS'></div>
+    <!--angular file-->
+    <script src="../angular.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+      angular.module('sampleApp', [])
+        .directive('hello', function($log){
+          return {
+            name : 0,
+            priority : 0,
+            template : '<div></div>',
+            // templateUrl : 'directive.html',
+            replace : false,
+            transclude : false,
+            restrict : 'A',
+            scope : false,
+            // require : 'ngModel',
+            controller : function($scope, $element, $attrs, $transclude){},
+            compile : function compile(tElement, tAttrs){
+              return {
+                pre : function preLink(scope, iElement, iAttrs, controller){
+
+                },
+                post : function postLink(scope, iElement, iAttrs, controller){
+                  $log.log("<h1>hello " + iAttrs.name + "</h1>");
+                  iElement.html("<h1>hello " + iAttrs.name + "</h1>");
+                }
+              }
+              // 또는
+            // return function postLink(scope, iElement, iAttrs, controlle) { }
+            },
+            // 또는
+            // link: {
+            //  pre: function preLink(scope, iElement, iAttrs, controller) { },
+            //  post: function postLink(scope, iElement, iAttrs, controller){ }
+            // }
+            // 또는
+            // link: function postLink(scope, iElement, iAttrs, controller) {}
+          };
+        });
+    </script>
+  </body>
+</html>

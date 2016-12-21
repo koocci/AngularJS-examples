@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app = "sampleApp">
+  <head>
+    <meta charset="utf-8" />
+    <title>example 2.24</title>
+  </head>
+  <body ng-controller="mainCtrl">
+    <p ng:style="getStyle()">
+      hello
+    </p>
+    <p class="ng_style: getStyle()">
+      hello
+    </p>
+    <ng-form name="groupForm">
+      <form name="formA">
+        <input type="text" />
+      </form>
+      <form name="formB">
+        <input type="text" />
+      </form>
+    </ng-form>
+    <!--angular file-->
+    <script src="../angular.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+      angular.module('sampleApp', [])
+        .controller("mainCtrl",['$scope',function($scope){
+          $scope.getStyle = function(){
+            return {'color' : 'red'};
+          }
+        }]);
+
+    </script>
+  </body>
+</html>
